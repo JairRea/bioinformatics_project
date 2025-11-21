@@ -1,4 +1,6 @@
-# Diabetes Prediction Using Machine Learning
+# Bioinformatics Project: Diabetes Prediction Using Machine Learning
+
+Final project for Bioinformatics. Machine Learning using a Diabetes dataset.
 
 ## Project Overview
 This project uses biomarkers from the Diabetes Prediction Dataset (Kaggle) to predict type 2 diabetes onset using three machine learning models:
