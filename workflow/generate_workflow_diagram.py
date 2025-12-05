@@ -133,6 +133,29 @@ def create_workflow_diagram():
                             color=edge_color, connectionstyle="arc3,rad=0.3")
     ax.add_patch(arrow6)
     
+    # Arrow from evaluation to analysis
+    arrow7 = FancyArrowPatch((7.2, 5.5), (7.2, 4.3),
+                            arrowstyle='->', mutation_scale=20, linewidth=2, color=edge_color)
+    ax.add_patch(arrow7)
+    
+    # Step 7: Analysis and Interpretation
+    box7 = FancyBboxPatch((5.5, 2.5), 3.4, 1.7, boxstyle="round,pad=0.15",
+                          edgecolor=edge_color, facecolor='#FFF3E0', linewidth=2)  # Light orange
+    ax.add_patch(box7)
+    ax.text(7.2, 4.0, 'Analysis & Interpretation', ha='center', va='center', 
+            fontsize=12, fontweight='bold')
+    
+    # Analysis steps
+    analysis_steps = [
+        ('• Compare model performance', 3.6, False),
+        ('• Identify best-performing model', 3.3, False),
+        ('• Analyze feature importance', 3.0, False),
+        ('• Evaluate clinical relevance', 2.7, False),
+    ]
+    
+    for text, y, is_header in analysis_steps:
+        ax.text(7.2, y, text, ha='center', va='center', fontsize=8)
+    
     # Add legend/notes at bottom
     ax.text(5, 0.3, 'Pipeline applies to both General and Pima datasets independently', 
             ha='center', va='center', fontsize=9, style='italic', 
