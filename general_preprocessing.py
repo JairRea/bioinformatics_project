@@ -5,9 +5,9 @@ from sklearn.preprocessing import StandardScaler
 import os
 
 
-class DiabetesDataPreprocessor:
+class GeneralDiabetesPreprocessor:
     
-    def __init__(self, data_path='data/diabetes_prediction_dataset.csv'):
+    def __init__(self, data_path='data/general_diabetes.csv'):
         self.data_path = data_path
         self.scaler = StandardScaler()
         self.feature_names = None
@@ -20,8 +20,8 @@ class DiabetesDataPreprocessor:
         if not os.path.exists(self.data_path):
             raise FileNotFoundError(
                 f"Dataset not found at {self.data_path}. "
-                f"Please download the Diabetes Prediction Dataset from Kaggle "
-                f"and place it in the data/ folder."
+                f"Please download the General Diabetes Dataset from Kaggle "
+                f"and place it in the data/ folder as 'general_diabetes.csv'."
             )
         
         df = pd.read_csv(self.data_path)
@@ -135,21 +135,22 @@ class DiabetesDataPreprocessor:
         return self.prepare_features(df)
 
 
-def get_preprocessed_data(data_path='data/diabetes_prediction_dataset.csv', explore=False):
-    preprocessor = DiabetesDataPreprocessor(data_path)
+def get_general_preprocessed_data(data_path='data/general_diabetes.csv', explore=False):
+    preprocessor = GeneralDiabetesPreprocessor(data_path)
     return preprocessor.preprocess(explore=explore)
 
 
 if __name__ == "__main__":
     # Test the preprocessing pipeline
-    print("Testing Data Preprocessing Pipeline...")
+    print("Testing General Diabetes Preprocessing Pipeline...")
     try:
-        X_train, X_test, y_train, y_test, feature_names = get_preprocessed_data(explore=True)
+        X_train, X_test, y_train, y_test, feature_names = get_general_preprocessed_data(explore=True)
         print("\n=== Preprocessing Successful ===")
         print(f"Training features shape: {X_train.shape}")
         print(f"Test features shape: {X_test.shape}")
         print(f"Feature names: {feature_names}")
     except FileNotFoundError as e:
         print(f"\nError: {e}")
-        print("\nPlease download the dataset from Kaggle:")
+        print("\nPlease download the General Diabetes dataset from Kaggle:")
         print("https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset")
+        print("and save it as 'data/general_diabetes.csv'")

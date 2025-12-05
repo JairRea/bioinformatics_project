@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 
 # Import preprocessing
-from data_preprocessing import get_preprocessed_data
+from general_preprocessing import get_general_preprocessed_data
 
 # Import models
 from logistic_regression_model import LogisticRegressionModel
@@ -26,6 +26,7 @@ def print_section_header(title):
 
 
 def train_all_models(X_train, X_test, y_train, y_test, feature_names, 
+                     save_path_models='models/general_diabetes/',
                      tune_hyperparameters=False):
     results = {}
     
@@ -42,7 +43,7 @@ def train_all_models(X_train, X_test, y_train, y_test, feature_names,
     print("\nTop 10 Most Important Features (by coefficient magnitude):")
     print(lr_coefficients.head(10))
     
-    lr_model.save_model()
+    lr_model.save_model(filepath=f'{save_path_models}logistic_regression_model.pkl')
     lr_time = time.time() - start_time
     
     results['Logistic Regression'] = {
@@ -74,7 +75,7 @@ def train_all_models(X_train, X_test, y_train, y_test, feature_names,
     print("\nTop 10 Most Important Features:")
     print(rf_feature_importance.head(10))
     
-    rf_model.save_model()
+    rf_model.save_model(filepath=f'{save_path_models}random_forest_model.pkl')
     rf_time = time.time() - start_time
     
     results['Random Forest'] = {
@@ -108,7 +109,7 @@ def train_all_models(X_train, X_test, y_train, y_test, feature_names,
     print(f"C: {sv_info['C']}")
     print(f"Gamma: {sv_info['gamma']}")
     
-    svm_model.save_model()
+    svm_model.save_model(filepath=f'{save_path_models}svm_model.pkl')
     svm_time = time.time() - start_time
     
     results['SVM'] = {
@@ -125,7 +126,7 @@ def train_all_models(X_train, X_test, y_train, y_test, feature_names,
     return results
 
 
-def generate_visualizations(results, y_test, save_path='results/'):
+def generate_visualizations(results, y_test, save_path='results/general_diabetes/'):
     print_section_header("GENERATING VISUALIZATIONS")
     
     # Individual ROC curves and confusion matrices
@@ -173,7 +174,7 @@ def compare_models(results):
     metrics_data = {name: res['metrics'] for name, res in results.items()}
     
     # Create and display summary table
-    summary_df = create_summary_table(metrics_data)
+    summary_df = create_summary_table(metrics_data, save_path='results/general_diabetes/')
     
     # Training time comparison
     print("\n" + "="*70)
@@ -198,11 +199,11 @@ def compare_models(results):
 
 def main():
     print("\n" + "="*80)
-    print(" DIABETES PREDICTION USING MACHINE LEARNING ".center(80, "="))
+    print(" GENERAL DIABETES PREDICTION USING MACHINE LEARNING ".center(80, "="))
     print("="*80)
     print(f"\nAnalysis started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("\nModels: Logistic Regression, Random Forest, SVM")
-    print("Dataset: Diabetes Prediction Dataset (Kaggle)")
+    print("Dataset: General Diabetes Prediction Dataset (Kaggle)")
     
     # Configuration
     TUNE_HYPERPARAMETERS = False  # Set to True for hyperparameter tuning (slower)
@@ -210,20 +211,21 @@ def main():
     # Load and preprocess data
     print_section_header("DATA LOADING AND PREPROCESSING")
     try:
-        X_train, X_test, y_train, y_test, feature_names = get_preprocessed_data(explore=True)
+        X_train, X_test, y_train, y_test, feature_names = get_general_preprocessed_data(explore=True)
     except FileNotFoundError as e:
         print(f"\n{e}")
-        print("\nPlease download the Diabetes Prediction Dataset from Kaggle:")
+        print("\nPlease download the General Diabetes Prediction Dataset from Kaggle:")
         print("https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset")
-        print("\nPlace the CSV file in the 'data/' folder as 'diabetes_prediction_dataset.csv'")
+        print("\nPlace the CSV file in the 'data/' folder as 'general_diabetes.csv'")
         return
     
     # Train all models
-    results = train_all_models(X_train, X_test, y_train, y_test, feature_names, 
+    results = train_all_models(X_train, X_test, y_train, y_test, feature_names,
+                              save_path_models='models/general_diabetes/',
                               tune_hyperparameters=TUNE_HYPERPARAMETERS)
     
     # Generate visualizations
-    generate_visualizations(results, y_test)
+    generate_visualizations(results, y_test, save_path='results/general_diabetes/')
     
     # Compare models
     compare_models(results)
@@ -231,8 +233,8 @@ def main():
     # Final message
     print_section_header("ANALYSIS COMPLETE")
     print("All models have been trained and evaluated successfully!")
-    print("Results and visualizations have been saved to the 'results/' folder.")
-    print("Trained models have been saved to the 'models/' folder.")
+    print("Results and visualizations have been saved to the 'results/general_diabetes/' folder.")
+    print("Trained models have been saved to the 'models/general_diabetes/' folder.")
     print(f"\nAnalysis completed at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("\n" + "="*80)
 
