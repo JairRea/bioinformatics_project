@@ -353,7 +353,7 @@ bioinformatics_project/
 │   ├── DATASET_COMPARISON.md              # Comparative analysis
 │   ├── PROJECT_OUTLINE.md                 # Detailed methodology
 │   ├── NAMING_CONVENTION_UPDATE.md        # File organization guide
-│   └── # Code Citations.md                # APA citations
+│   └── References.md                      # APA citations and references
 ├── workflow/                          # Workflow visualizations
 │   ├── ml_pipeline_workflow.png           # ML pipeline diagram
 │   └── generate_workflow_diagram.py       # Diagram generation script

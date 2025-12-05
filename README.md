@@ -25,7 +25,7 @@ Bio_ML_Project/
 │   ├── DATASET_COMPARISON.md      # Comparative analysis
 │   ├── PROJECT_OUTLINE.md         # Detailed methodology
 │   ├── NAMING_CONVENTION_UPDATE.md # File organization guide
-│   └── # Code Citations.md        # APA citations
+│   └── References.md              # APA citations and references
 ├── workflow/                      # Workflow diagrams and visualizations
 │   ├── ml_pipeline_workflow.png   # ML pipeline diagram
 │   └── generate_workflow_diagram.py # Script to generate workflow diagram
@@ -91,7 +91,7 @@ Additional documentation is available in the `docs/` folder:
 - **[Dataset Comparison](docs/DATASET_COMPARISON.md)** - Comprehensive analysis comparing General vs Pima datasets
 - **[Project Outline](docs/PROJECT_OUTLINE.md)** - Detailed methodology, timeline, and approach
 - **[Naming Convention](docs/NAMING_CONVENTION_UPDATE.md)** - File naming standards and organization
-- **[Citations](docs/# Code Citations.md)** - APA citations for datasets, tools, and algorithms
+- **[References](docs/References.md)** - APA citations for datasets, tools, and algorithms
 
 ## Workflow Visualization
 A comprehensive ML pipeline diagram is available in the `workflow/` folder:
