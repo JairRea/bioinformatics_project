@@ -26,6 +26,9 @@ Bio_ML_Project/
 │   ├── PROJECT_OUTLINE.md         # Detailed methodology
 │   ├── NAMING_CONVENTION_UPDATE.md # File organization guide
 │   └── # Code Citations.md        # APA citations
+├── workflow/                      # Workflow diagrams and visualizations
+│   ├── ml_pipeline_workflow.png   # ML pipeline diagram
+│   └── generate_workflow_diagram.py # Script to generate workflow diagram
 ├── general_preprocessing.py       # General dataset preprocessing
 ├── pima_preprocessing.py          # Pima dataset preprocessing
 ├── logistic_regression_model.py   # Logistic regression implementation
@@ -89,3 +92,7 @@ Additional documentation is available in the `docs/` folder:
 - **[Project Outline](docs/PROJECT_OUTLINE.md)** - Detailed methodology, timeline, and approach
 - **[Naming Convention](docs/NAMING_CONVENTION_UPDATE.md)** - File naming standards and organization
 - **[Citations](docs/# Code Citations.md)** - APA citations for datasets, tools, and algorithms
+
+## Workflow Visualization
+A comprehensive ML pipeline diagram is available in the `workflow/` folder:
+- **[ML Pipeline Diagram](workflow/ml_pipeline_workflow.png)** - Visual representation of the complete analysis workflow from data input through model evaluation

@@ -60,3 +60,9 @@ python main_general.py && python main_pima.py
 - **Pima:** Small dataset (768), moderate accuracy, realistic messy data
 
 See [DATASET_COMPARISON.md](DATASET_COMPARISON.md) for detailed comparative analysis.
+
+## Workflow Visualization
+
+For a visual representation of the complete ML pipeline used for both datasets:
+- View the workflow diagram: `workflow/ml_pipeline_workflow.png`
+- Regenerate diagram: `python workflow/generate_workflow_diagram.py`

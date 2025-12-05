@@ -277,7 +277,13 @@ Enables deployment and inference without retraining.
 - CSV export of all metrics for external analysis
 - File: `model_comparison_summary.csv`
 
-All visualizations saved to `results/` directory with high-resolution PNG format.
+**6. Workflow Diagram**
+- Visual representation of the complete ML pipeline
+- Shows data flow from input through preprocessing, model training, and evaluation
+- Illustrates all three models (Logistic Regression, Random Forest, SVM) with their parameters
+- File: `workflow/ml_pipeline_workflow.png`
+
+All visualizations saved to `results/` and `workflow/` directories with high-resolution PNG format.
 
 ---
 
@@ -322,23 +328,43 @@ bioinformatics_project/
 ├── README.md                          # Comprehensive project documentation
 ├── requirements.txt                   # Pinned dependencies for reproducibility
 ├── data/
-│   └── diabetes_prediction_dataset.csv    # Kaggle dataset (100k records)
+│   ├── general_diabetes.csv               # General diabetes dataset (96k records)
+│   └── pima_diabetes.csv                  # Pima Indians dataset (768 records)
 ├── models/
-│   ├── logistic_regression_model.pkl      # Serialized LR model
-│   ├── random_forest_model.pkl            # Serialized RF model
-│   └── svm_model.pkl                      # Serialized SVM model
+│   ├── general_diabetes/                  # General dataset models
+│   │   ├── logistic_regression_model.pkl
+│   │   ├── random_forest_model.pkl
+│   │   └── svm_model.pkl
+│   └── pima_diabetes/                     # Pima dataset models
+│       ├── logistic_regression_model.pkl
+│       ├── random_forest_model.pkl
+│       └── svm_model.pkl
 ├── results/
-│   ├── *_roc_curve.png                    # ROC visualizations
-│   ├── *_confusion_matrix.png             # Confusion matrices
-│   ├── *_feature_importance.png           # Feature analysis plots
-│   ├── model_comparison_*.png             # Comparative visualizations
-│   └── model_comparison_summary.csv       # Metrics table
-├── data_preprocessing.py              # Data pipeline implementation
+│   ├── general_diabetes/                  # General dataset results
+│   │   ├── *_roc_curve.png                    # ROC visualizations
+│   │   ├── *_confusion_matrix.png             # Confusion matrices
+│   │   ├── *_feature_importance.png           # Feature analysis plots
+│   │   ├── model_comparison_*.png             # Comparative visualizations
+│   │   └── model_comparison_summary.csv       # Metrics table
+│   └── pima_diabetes/                     # Pima dataset results
+│       └── [same structure as general_diabetes]
+├── docs/                              # Documentation folder
+│   ├── RUN_BOTH_DATASETS.md               # Quick start guide
+│   ├── DATASET_COMPARISON.md              # Comparative analysis
+│   ├── PROJECT_OUTLINE.md                 # Detailed methodology
+│   ├── NAMING_CONVENTION_UPDATE.md        # File organization guide
+│   └── # Code Citations.md                # APA citations
+├── workflow/                          # Workflow visualizations
+│   ├── ml_pipeline_workflow.png           # ML pipeline diagram
+│   └── generate_workflow_diagram.py       # Diagram generation script
+├── general_preprocessing.py           # General dataset preprocessing
+├── pima_preprocessing.py              # Pima dataset preprocessing
 ├── logistic_regression_model.py       # LR classifier class
 ├── random_forest_model.py             # RF classifier class
 ├── svm_model.py                       # SVM classifier class
 ├── visualizations.py                  # Plotting functions
-└── main.py                            # Workflow orchestration script
+├── main_general.py                    # General dataset workflow orchestration
+└── main_pima.py                       # Pima dataset workflow orchestration
 ```
 
 ### README.md Contents
